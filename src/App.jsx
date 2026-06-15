@@ -1,13 +1,9 @@
-import './App.css'
+import Body from './components/Body'
 
 function App() {
 
   return (
-    <>
-      <div id="center" className="text-3xl font-bold underline">
-        hello world 
-       </div>
-    </>
+    <Body/>
   )
 }
 

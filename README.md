@@ -23,6 +23,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - vite create react app
 - Configured TailwindCss
+- Header
+- Login form
 
 # features
 - Login/sign Up
