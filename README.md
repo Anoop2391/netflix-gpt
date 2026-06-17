@@ -25,6 +25,17 @@ If you are developing a production application, we recommend using TypeScript wi
 - Configured TailwindCss
 - Header
 - Login form
+- Sign up form
+- Form validation
+- useRef
+- Firebase setup
+- Deploy our app in production.
+- Create signup User account
+- Implement sign in user api
+- Created redux store with userSlice
+- implemented the sign out 
+- updated our profile.
+
 
 # features
 - Login/sign Up
