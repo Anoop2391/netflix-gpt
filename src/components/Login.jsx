@@ -7,7 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+import { BACKGROUND_IMAGE } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -15,7 +15,6 @@ const Login = () => {
   const name = useRef("null");
   const email = useRef("null");
   const password = useRef("null");
-  const navigate = useNavigate();
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -40,21 +39,22 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           updateProfile(auth.currentUser, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/35482180?s=400&u=9e46ca6885b6270ec9916f64d22b5d02a3105111&v=4"
-          }).then(() => {
-            console.log("Profile updated!");
-            // ...
-          }).catch((error) => {
-            // An error occurred
-            setErrorMessage(error.message);
-          });
-          console.log(user);
-          navigate("/");
+            displayName: name.current.value,
+            photoURL:
+              "https://avatars.githubusercontent.com/u/35482180?s=400&u=9e46ca6885b6270ec9916f64d22b5d02a3105111&v=4",
+          })
+            .then(() => {
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorMessage);
+          setErrorMessage(errorCode + ": " + errorMessage);
         });
     } else {
       signInWithEmailAndPassword(
@@ -65,9 +65,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
-
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -81,7 +78,7 @@ const Login = () => {
       <div className="absolute">
         <Header />
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/8027eb3f-343a-499d-9892-e683c12e3cb1/web/IN-en-20260608-TRIFECTA-perspective_d70af879-e407-4aee-8615-4c82210065d5_large.jpg"
+          src={BACKGROUND_IMAGE}
           alt="background"
         />
       </div>
@@ -115,14 +112,14 @@ const Login = () => {
         <p className="p-2.5 text-red-500 text-bold mt-2">{errorMessage}</p>
         <button
           type="submit"
-          className="bg-red-700 text-white p-2.5 m-2 rounded-md text-sm font-bold w-full"
+          className="bg-red-700 text-white p-2.5 m-2 rounded-md text-sm font-bold w-full cursor-pointer"
           onClick={() => handleButtonClick()}
         >
           {" "}
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p
-          className="text-sm text-white mt-6"
+          className="text-sm text-white mt-6 cursor-pointer"
           onClick={() => toggleSignInForm()}
         >
           {isSignInForm

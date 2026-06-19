@@ -35,7 +35,14 @@ If you are developing a production application, we recommend using TypeScript wi
 - Created redux store with userSlice
 - implemented the sign out 
 - updated our profile.
-
+- Bug fix: If user is not logged in then route to login page and vice versa
+- unscubscribe to the onAuthStateChange callback.
+- add hardcoded values to constants.
+- Register for TMDB movies
+- Get API access token
+- Get data from TMDB now playing movie list.
+- Implement fetch api.
+- Fetch from TMDB Movies
 
 # features
 - Login/sign Up
