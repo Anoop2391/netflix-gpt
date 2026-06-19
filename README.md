@@ -43,6 +43,13 @@ If you are developing a production application, we recommend using TypeScript wi
 - Get data from TMDB now playing movie list.
 - Implement fetch api.
 - Fetch from TMDB Movies
+- Custom hook for now playing movies
+- Create movieSlice
+- Update sotre with movies data.
+- Planning for MainContainer & secondary container
+- Fetch data for trailer video
+- Embedded youtube video and make it autoplay and mute
+- Tailwind classes to make main container look good.
 
 # features
 - Login/sign Up
