@@ -17,14 +17,6 @@ const SecondaryContainer = () => {
         <Movielist title="Upcoming" movies={upComingMovies} />
         <Movielist title="Now Playing" movies={nowPlayingMovies} />
       </div>
-      {/* movielist 
-            * MovieCard
-            movielist - now playing
-            movielist - trending
-            movielist - popular
-            movielist - top rated
-            movielist - upcoming
-            */}
     </div>
   );
 };
