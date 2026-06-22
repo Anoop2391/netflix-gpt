@@ -50,6 +50,14 @@ If you are developing a production application, we recommend using TypeScript wi
 - Fetch data for trailer video
 - Embedded youtube video and make it autoplay and mute
 - Tailwind classes to make main container look good.
+- movie list component
+- movie card
+- Build secondary container
+- Tmdb image cdn url
+- Made the browse page css look good
+- usePopularMovies
+- useTopRatedMovies
+- useUpcomingMovies
 
 # features
 - Login/sign Up

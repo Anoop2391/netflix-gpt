@@ -3,10 +3,12 @@ export const LOGO =
 export const BACKGROUND_IMAGE =
   "https://assets.nflxext.com/ffe/siteui/vlv3/8027eb3f-343a-499d-9892-e683c12e3cb1/web/IN-en-20260608-TRIFECTA-perspective_d70af879-e407-4aee-8615-4c82210065d5_large.jpg";
 
- export const options = {
+ export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTUzMTgzY2YzNTczNjg1ZDlhZjM1NDVmODQxOGExMSIsIm5iZiI6MTc4MTc5NzMxNi41OTM5OTk5LCJzdWIiOiI2YTM0MTFjNDI5YTMwYWFlNjEyNjkxZjUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.r7Q7nCSZ3eGiwTd0w603OOcbGkUvBvTmqhI7zUVzEKY'
     }
   };
+
+  export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";

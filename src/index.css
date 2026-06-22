@@ -6,3 +6,12 @@ html, body, #root {
   padding: 0;
   box-sizing: border-box;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
