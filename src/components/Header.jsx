@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import LanguageSelector from "./LanguageSelector";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -37,35 +39,37 @@ const Header = () => {
     };
   }, []);
   const user = useSelector((state) => state.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error);
       });
   };
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  };
   return (
-    <div className="absolute px-8 py-2 bg-linear-to-r from-black to-transparent z-90 w-screen flex justify-between items-center">
-      <img
-        className="w-40"
-        src={LOGO}
-        alt="background"
-      />
+    <div className="absolute px-8 py-2 bg-linear-to-b from-black to-transparent z-90 w-screen flex justify-between items-center">
+      <img className="w-40" src={LOGO} alt="background" />
       {user && (
-      <div className="flex p-2">
-        <img
-          src={user?.photoURL}
-          alt="user icon"
-          className="w-12 h-12"
-        />
-        <button
-          onClick={handleSignOut}
-          className="text-white font-bold cursor-pointer ml-2"
-        >
-          Sign Out
-        </button>
-      </div>
+        <div className="flex p-2">
+          {showGptSearch && <LanguageSelector />}
+          <button
+            className="cursor-pointer bg-purple-500 text-white px-4 py-2 rounded-lg mt-2 mr-4"
+            onClick={handleGptSearchClick}
+          >
+            GPT Search
+          </button>
+          <img src={user?.photoURL} alt="user icon" className="w-12 h-12" />
+          <button
+            onClick={handleSignOut}
+            className="text-white font-bold cursor-pointer ml-2"
+          >
+            Sign Out
+          </button>
+        </div>
       )}
     </div>
   );
