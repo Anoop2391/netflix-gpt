@@ -60,7 +60,7 @@ const Header = () => {
             className="cursor-pointer bg-purple-500 text-white px-4 py-2 rounded-lg mt-2 mr-4"
             onClick={handleGptSearchClick}
           >
-            GPT Search
+            {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
           <img src={user?.photoURL} alt="user icon" className="w-12 h-12" />
           <button

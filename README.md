@@ -17,8 +17,6 @@ Note: This will impact Vite dev & build performances.
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-
-
 # Netflix Gpt
 
 - vite create react app
@@ -33,7 +31,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - Create signup User account
 - Implement sign in user api
 - Created redux store with userSlice
-- implemented the sign out 
+- implemented the sign out
 - updated our profile.
 - Bug fix: If user is not logged in then route to login page and vice versa
 - unscubscribe to the onAuthStateChange callback.
@@ -58,18 +56,21 @@ If you are developing a production application, we recommend using TypeScript wi
 - usePopularMovies
 - useTopRatedMovies
 - useUpcomingMovies
+- GPT search page
+- Gpt search bar
+- Multilingual feature in our app
 
 # features
+
 - Login/sign Up
-    - Sign In/ Sign up form
-    - redirect to Browse page
+  - Sign In/ Sign up form
+  - redirect to Browse page
 - Browse (after authentication)
-    - Header
-    - Main Movie
-        - Tailer in Background
-        - Title & Description
-        - Movie Suggestions
-                - MovieLists * N
+  - Header
+  - Main Movie
+    - Tailer in Background
+    - Title & Description
+    - Movie Suggestions - MovieLists \* N
 - NetflixGPT
-    - Search Bar
-    - Movie Suggestions.
+  - Search Bar
+  - Movie Suggestions.
