@@ -12,7 +12,7 @@ const LanguageSelector = () => {
 
   return (
     <select
-      className="cursor-pointer bg-purple-500 text-white px-4 py-2 rounded-lg mt-2 mr-4"
+      className="cursor-pointer bg-red-700 text-white px-4 py-2 rounded-lg mt-2 mr-4"
       value={lang}
       onChange={handleLanguageChange}
     >

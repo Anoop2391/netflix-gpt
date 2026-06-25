@@ -1,6 +1,6 @@
 const VideoTile = ({ title, overview }) => {
   return (
-    <div className="w-[20%] aspect-video pt-[20%] pl-12 absolute z-10">
+    <div className="w-[40%] aspect-video pt-[20%] pl-12 absolute z-10">
       <h1 className="text-3xl text-white font-bold">{title}</h1>
       <p className="text-white text-sm w-full">{overview}</p>
       <div className="flex pt-5">

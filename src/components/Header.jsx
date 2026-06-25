@@ -57,7 +57,7 @@ const Header = () => {
         <div className="flex p-2">
           {showGptSearch && <LanguageSelector />}
           <button
-            className="cursor-pointer bg-purple-500 text-white px-4 py-2 rounded-lg mt-2 mr-4"
+            className="cursor-pointer bg-red-700 text-white px-4 py-2 rounded-lg mt-2 mr-4"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Homepage" : "GPT Search"}

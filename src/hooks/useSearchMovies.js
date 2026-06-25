@@ -9,7 +9,8 @@ const useSearchMovies = () => {
       API_OPTIONS,
     );
     const json = await movies.json();
-    return json.results;
+    const results = json.results.filter((movie) => movie.poster_path !== null);
+    return results;
   };
 
   return { searchMovies };
