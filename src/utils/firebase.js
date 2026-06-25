@@ -4,16 +4,34 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+const REQUIRED_FIREBASE_ENV_VARS = [
+  "VITE_FIREBASE_API_KEY",
+  "VITE_FIREBASE_AUTH_DOMAIN",
+  "VITE_FIREBASE_PROJECT_ID",
+  "VITE_FIREBASE_STORAGE_BUCKET",
+  "VITE_FIREBASE_MESSAGING_SENDER_ID",
+  "VITE_FIREBASE_APP_ID",
+];
+
+if (import.meta.env.DEV) {
+  const missing = REQUIRED_FIREBASE_ENV_VARS.filter(
+    (key) => !import.meta.env[key],
+  );
+  if (missing.length) {
+    console.warn(`Missing Firebase env vars: ${missing.join(", ")}`);
+  }
+}
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAtrZMt7Y96xswoF4oN7MG86_tVYuElepM",
-  authDomain: "netflixgpt-eee44.firebaseapp.com",
-  projectId: "netflixgpt-eee44",
-  storageBucket: "netflixgpt-eee44.firebasestorage.app",
-  messagingSenderId: "806212362713",
-  appId: "1:806212362713:web:5ed08a242d654d2f7e39c8",
-  measurementId: "G-KN9CZ8CVDG",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

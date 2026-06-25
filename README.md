@@ -59,6 +59,9 @@ If you are developing a production application, we recommend using TypeScript wi
 - GPT search page
 - Gpt search bar
 - Multilingual feature in our app
+- Create gpt search results page
+- Show all results and reuse moveilist component.
+- Integrate loading and shimmer ui for loading search results.
 
 # features
 

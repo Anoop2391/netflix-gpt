@@ -1,13 +1,19 @@
 import { useSelector } from "react-redux";
 import Movielist from "./Movielist";
+import GptMovieSuggestionsShimmer from "./GptMovieSuggestionsShimmer";
 
 const GptMovieSuggestions = () => {
-  const { movieNames, movieResults } = useSelector((store) => ({
-    movieNames: store.gpt.movieNames,
-    movieResults: store.gpt.movieResults,
-  }));
-  console.log(movieNames, movieResults);
+  const { movieNames, movieResults, isGptSearchLoading } = useSelector(
+    (store) => ({
+      movieNames: store.gpt.movieNames,
+      movieResults: store.gpt.movieResults,
+      isGptSearchLoading: store.gpt.isGptSearchLoading,
+    }),
+  );
+
+  if (isGptSearchLoading) return <GptMovieSuggestionsShimmer />;
   if (!movieNames || !movieResults) return null;
+
   return (
     <div className="p-4 m-10 text-white bg-black/75 bg-linear-to-b from-transparent to-black w-full">
       <div>

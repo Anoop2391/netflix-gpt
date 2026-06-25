@@ -1,38 +1,36 @@
 import { useDispatch, useSelector } from "react-redux";
-import { API_OPTIONS, LANG_CONSTANTS } from "../utils/constants";
+import { LANG_CONSTANTS } from "../utils/constants";
 import { useRef } from "react";
 import openai from "../utils/openAi";
-import { addGptMoviesResults } from "../utils/gptSlice";
+import { addGptMoviesResults, setGptSearchLoading } from "../utils/gptSlice";
+import useSearchMovies from "../hooks/useSearchMovies";
 
 const GptSearchBar = () => {
   const lang = useSelector((store) => store.config.lang);
+  const isGptSearchLoading = useSelector(
+    (store) => store.gpt.isGptSearchLoading,
+  );
   const { search, gptSearchPlaceholder } = LANG_CONSTANTS[lang];
+  const { searchMovies } = useSearchMovies();
   const dispatch = useDispatch();
   const searchText = useRef("");
-  // search movies in tmdb api
-  const searchMovies = async (movieName) => {
-    const movies = await fetch(
-      "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=" +
-        encodeURIComponent(movieName.trim()),
-      API_OPTIONS,
-    );
-    const json = await movies.json();
-    return json.results;
-  };
+
   //function to handle the gpt search click
   const handleGptSearchClick = async () => {
-    const text =
-      "Act as a movie recommendation system. I will show you a movie title, you will need to suggest some movies for me to watch. My first movie title is " +
-      searchText.current.value +
-      ". Only suggest 5 movie titles, no other text, the movies should be comma separated like this: movie1, movie2, movie3, movie4, movie5";
-    //make an api call to the gpt api with the text
-    const gptResults = await openai.chat.completions.create({
-      model: "gpt-5.4-mini",
-      messages: [{ role: "user", content: text }],
-    });
-    if (!gptResults.choices.length) {
-      return alert("No movies found");
-    } else {
+    dispatch(setGptSearchLoading(true));
+    try {
+      const text =
+        "Act as a movie recommendation system. I will show you a movie title, you will need to suggest some movies for me to watch. My first movie title is " +
+        searchText.current.value +
+        ". Only suggest 5 movie titles, no other text, the movies should be comma separated like this: movie1, movie2, movie3, movie4, movie5";
+      const gptResults = await openai.chat.completions.create({
+        model: "gpt-5.4-mini",
+        messages: [{ role: "user", content: text }],
+      });
+      if (!gptResults.choices.length) {
+        alert("No movies found");
+        return;
+      }
       const movieNames = gptResults.choices[0].message.content
         .split(",")
         .map((name) => name.trim());
@@ -44,6 +42,8 @@ const GptSearchBar = () => {
           movieResults: movieResults,
         }),
       );
+    } finally {
+      dispatch(setGptSearchLoading(false));
     }
   };
 
@@ -60,8 +60,9 @@ const GptSearchBar = () => {
           placeholder={gptSearchPlaceholder}
         />
         <button
-          className="bg-red-700 text-white px-4 py-2 rounded-lg"
+          className="bg-red-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleGptSearchClick}
+          disabled={isGptSearchLoading}
         >
           {search}
         </button>
