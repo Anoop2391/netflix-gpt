@@ -9,10 +9,10 @@ const MainContainer = () => {
   const mainMovie = selectedMovie ?? movies[0];
   const { original_title, overview, id } = mainMovie;
   return (
-    <>
+    <div className="relative h-screen overflow-hidden sm:h-auto">
       <VideoTile title={original_title} overview={overview} />
       <VideoBackground movieId={id} />
-    </>
+    </div>
   );
 };
 

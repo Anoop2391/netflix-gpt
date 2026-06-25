@@ -15,7 +15,7 @@ const Browse = () => {
   useTopRatedMovies();
   useUpComingMovies();
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full min-h-screen relative">
       <Header />
       {showGptSearch ? (
         <GptSearch />

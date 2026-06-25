@@ -51,18 +51,18 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
   return (
-    <div className="absolute px-8 py-2 bg-linear-to-b from-black to-transparent z-90 w-screen flex justify-between items-center">
-      <img className="w-40" src={LOGO} alt="background" />
+    <div className="absolute px-3 sm:px-8 py-2 bg-linear-to-b from-black to-transparent z-90 w-screen flex justify-between items-center">
+      <img className="w-28 sm:w-40" src={LOGO} alt="background" />
       {user && (
-        <div className="flex p-2">
+        <div className="flex flex-wrap p-2">
           {showGptSearch && <LanguageSelector />}
           <button
-            className="cursor-pointer bg-red-700 text-white px-4 py-2 rounded-lg mt-2 mr-4"
+            className="cursor-pointer bg-red-700 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-lg mt-2 mr-2 sm:mr-4"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          <img src={user?.photoURL} alt="user icon" className="w-12 h-12" />
+          <img src={user?.photoURL} alt="user icon" className="w-8 h-8 sm:w-12 sm:h-12" />
           <button
             onClick={handleSignOut}
             className="text-white font-bold cursor-pointer ml-2"
